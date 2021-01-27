@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Code of a class to create a linked list of nodes - TP3 INLO
 Created on Tue Jan 26 12:02:53 2021
-
 @author: Marine Girardey
 """
-from node import Node
+from likedlist_node import Node
 
 class ChainedList:
     """
@@ -18,11 +18,11 @@ class ChainedList:
 
     def __init__(self, nodes):
         self.first_node = Node(nodes[0])
-        n = self.first_node
+        the_node = self.first_node
         i = 1
         while i < len(nodes):
-            n.link = Node(nodes[i])
-            n = n.link
+            the_node.link = Node(nodes[i])
+            the_node = the_node.link
             i += 1
 
     def insert_node_after(self, data, new_node):
@@ -35,17 +35,15 @@ class ChainedList:
         """
         my_node = self.first_node
         while my_node is not None:
-            
             if my_node.data == data:
-                
                 break
             my_node = my_node.link
-        
+
         # Create a new node
         node = Node(new_node)
-        # Make next of new Node as next of prev_node  
+        # Make next of new Node as next of prev_node
         node.link = my_node.link
-        # Make next of prev_node as new_node  
+        # Make next of prev_node as new_node
         my_node.link = node
 
     def delete_node(self, data):
